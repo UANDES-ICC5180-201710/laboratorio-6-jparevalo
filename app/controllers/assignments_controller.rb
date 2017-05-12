@@ -1,6 +1,7 @@
 class AssignmentsController < ApplicationController
   before_action :set_assignment, only: [:show, :edit, :update, :destroy]
   before_action :set_course
+  before_action :authenticate_person!
 
   # GET /assignments
   # GET /assignments.json
