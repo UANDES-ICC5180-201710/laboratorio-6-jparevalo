@@ -21,6 +21,7 @@
 <%= render 'courses/navbar', course: @course %>
 
 
-
-<%= link_to 'Edit', edit_course_path(@course) %> |
-<%= link_to 'Back', courses_path %>
+<div style='margin-top:30px'>
+    <%= link_to 'Edit', edit_course_path(@course) %> |
+    <%= link_to 'Back', courses_path %>
+</div>
