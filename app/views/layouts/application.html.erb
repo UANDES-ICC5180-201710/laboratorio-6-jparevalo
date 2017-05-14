@@ -9,8 +9,24 @@
   </head>
 
   <body>
-    <%= link_to 'courses', courses_path %>
-    <%= link_to 'people', people_path %>
+    <li>
+        <%= link_to 'Courses', courses_path %>
+    </li>
+    <li>
+        <%= link_to 'People', people_path %>
+    </li>
+    <% if person_signed_in? %>
+        <li>
+            <%= link_to('Logout', destroy_person_session_path, :method => :delete) %>
+        </li>
+    <%else %>
+        <li>
+            <%= link_to 'Sign In', new_person_session_path %>
+        </li>
+        <li>
+            <%= link_to 'Register', new_person_registration_path %>
+        </li>
+    <% end %>
     <% if @course %>
       <div>
         <%= render 'courses/navbar', course: @course %>

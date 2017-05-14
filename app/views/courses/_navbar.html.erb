@@ -1,5 +1,8 @@
-<strong>
-  <%= link_to course, course %>:
-</strong>
-<%= link_to 'Assignments', course_assignments_path(course_id: course.id) %>
-<%= link_to 'Students', students_course_path(id: course.id) %>
+<% if course.id != nil%>
+    <br>
+    <strong>
+      <%= link_to course, course %>:
+    </strong>
+    <%= link_to 'Assignments', course_assignments_path(course_id: course.id) %>
+    <%= link_to 'Students', students_course_path(id: course.id) %>
+<% end %>
