@@ -17,6 +17,8 @@ class EnrollmentsController < ApplicationController
   # GET /enrollments/new
   def new
     @enrollment = Enrollment.new
+    @enrollment.course = @course
+    @all_students = Person.all
   end
 
   # GET /enrollments/1/edit
@@ -59,7 +61,7 @@ class EnrollmentsController < ApplicationController
   def destroy
     @enrollment.destroy
     respond_to do |format|
-      format.html { redirect_to enrollments_url, notice: 'Enrollment was successfully destroyed.' }
+      format.html { redirect_to course_enrollments_path, notice: 'Enrollment was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

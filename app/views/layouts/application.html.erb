@@ -9,29 +9,37 @@
   </head>
 
   <body>
-    <li>
-        <%= link_to 'Courses', courses_path %>
-    </li>
-    <li>
-        <%= link_to 'People', people_path %>
-    </li>
-    <% if person_signed_in? %>
-        <li>
-            <%= link_to('Logout', destroy_person_session_path, :method => :delete) %>
-        </li>
-    <%else %>
-        <li>
-            <%= link_to 'Sign In', new_person_session_path %>
-        </li>
-        <li>
-            <%= link_to 'Register', new_person_registration_path %>
-        </li>
-    <% end %>
-    <% if @course %>
-      <div>
-        <%= render 'courses/navbar', course: @course %>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container">
+          <%= link_to "PROYECTO RAILS BASE", courses_path, id: "logo" %>
+          <nav>
+              <ul class="nav navbar-nav navbar-right">
+                  <li>
+                      <%= link_to 'Courses', courses_path %>
+                  </li>
+                  <li>
+                      <%= link_to 'People', people_path %>
+                  </li>
+                  <% if person_signed_in? %>
+                      <li>
+                          <%= link_to('Logout', destroy_person_session_path, :method => :delete) %>
+                      </li>
+                  <%else %>
+                      <li>
+                          <%= link_to 'Sign In', new_person_session_path %>
+                      </li>
+                      <li>
+                          <%= link_to 'Register', new_person_registration_path %>
+                      </li>
+                  <% end %>
+              </ul>
+          </nav>
       </div>
-    <% end %>
-    <%= yield %>
+    </header>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>

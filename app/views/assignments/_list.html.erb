@@ -1,7 +1,3 @@
-<p id="notice"><%= notice %></p>
-
-<h3>Assignments</h3>
-
 <table class='table'>
   <thead>
     <tr>
@@ -13,23 +9,19 @@
   </thead>
 
   <tbody>
-    <% @assignments.each do |assignment| %>
+    <% assignments.each do |assignment| %>
       <tr>
         <td><%= assignment.title %></td>
         <td><%= assignment.statement %></td>
         <td>
-          <%= link_to 'Grades', course_assignment_grades_path(assignment_id: assignment.id) %>
+          <%= link_to 'Grades', course_assignment_grades_path(assignment_id: assignment.id, course_id: @course.id) %>
         </td>
         <td><%= link_to 'Show', [@course, assignment] %></td>
         <td>
-          <%= link_to 'Edit', edit_course_assignment_path(id: assignment.id) %>
+          <%= link_to 'Edit', edit_course_assignment_path(id: assignment.id, course_id: @course.id) %>
         </td>
         <td><%= link_to 'Destroy', [@course, assignment], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Assignment', new_course_assignment_path %>

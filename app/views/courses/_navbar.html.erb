@@ -1,8 +1,6 @@
 <% if course.id != nil%>
-    <br>
-    <strong>
-      <%= link_to course, course %>:
-    </strong>
-    <%= link_to 'Assignments', course_assignments_path(course_id: course.id) %>
-    <%= link_to 'Students', students_course_path(id: course.id) %>
+    <ul class="nav nav-tabs nav-justified">
+        <li <%= "class='active'".html_safe if request.fullpath.split('/').last == 'assignments' %>><%= link_to 'Assignments', assignments_course_path(id: course.id) %></li>
+        <li <%= "class='active'".html_safe if request.fullpath.split('/').last == 'students' %>><%= link_to 'Students', students_course_path(id: course.id) %></li>
+    </ul>
 <% end %>

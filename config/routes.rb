@@ -5,10 +5,13 @@ Rails.application.routes.draw do
   authenticate :person do
       resources :courses do
         resources :enrollments
+        member do
+            get 'students', to: 'courses#students'
+            get 'assignments', to: 'courses#assignments'
+        end
         resources :assignments do
           resources :grades
         end
-        get 'students', to: 'courses#students', on: :member
       end
       resources :people
       root to: 'courses#index'
